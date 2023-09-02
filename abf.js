@@ -551,7 +551,7 @@
 				}
 				const message = (confirmPermission, [url, session, reads]) => {
 					return '🤮 Fingerprinting detected!'
-					+ (confirmPermission ? ' OK to allow or Cancel to abort\n' : '\n')
+					+ (confirmPermission ? ' OK to randomize or Cancel to break the tracker\n' : '\n')
 					+ '🛡 ' + session + '\n'
 					+ '💩 Creepy script: ' + url + '\n'
 					+ '🧐\n' + reads + '\n...' + '\n'
