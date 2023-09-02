@@ -196,7 +196,7 @@
 		const chunkRandomized = lastChunk.replace(/./g, (char, i) => {
 			const len = lastChunk.length
 			return (
-				i == len-1 ? rand1 : 
+				i == len-1 ? rand1 :
 				i == len-3 ? rand2 :
 				i == len-5 ? rand3 :
 				i == len-7 ? rand4 :
@@ -566,7 +566,7 @@
 					}
 					else if (!unknown) {
 						permission = confirm(message(true, [url, sessionProtection, readsFormatted]))
-					} 
+					}
 					if (permission) {
 						sessionStorage.setItem(sessionName + 'permit', 'allow')
 					}
@@ -774,7 +774,7 @@
 		// Deep calls
 		Object.defineProperties(root.Intl.DateTimeFormat.prototype, definify(intlProps))
 		Object.defineProperties(root.navigator.mediaDevices, definify(mediaDeviceProps))
-		// Resist lie detection               
+		// Resist lie detection
 		const library = {
 			appVersion: 'appVersion',
 			deviceMemory: 'deviceMemory',
