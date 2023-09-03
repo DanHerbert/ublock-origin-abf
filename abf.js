@@ -149,6 +149,11 @@
 		nativeGetTimezoneOffset.apply(this)
 		return timezoneOffsetComputed;
 	}
+	const nativeGetBattery = navigator.getBattery;
+	function getBattery() {
+		nativeGetBattery();
+		return Promise.resolve(Object.freeze({charging: true, chargingTime: 0, dischargingTime: Infinity}))
+	}
 	// webgl
 	function computeGetParameter(type) {
 		const nativeGetParameter = (
@@ -622,7 +627,7 @@
 			plugins: navigator.plugins,
 			connection: navigator.connection,
 			cookieEnabled: navigator.cookieEnabled,
-			getBattery: navigator.getBattery,
+			getBattery: getBattery,
 			getGamepads: navigator.getGamepads
 		}
 	},
