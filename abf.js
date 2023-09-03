@@ -585,6 +585,7 @@
 						//alert(message(false, [origin, sessionProtection, readsFormatted]))
 					}
 					else if (!unknown) {
+						console.warn('🤮 Fingerprinting detected!')
 						permission = true // confirm(message(true, [url, sessionProtection, readsFormatted]))
 					}
 					if (permission) {
