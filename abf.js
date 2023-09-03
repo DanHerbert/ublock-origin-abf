@@ -575,7 +575,7 @@
 						//alert(message(false, [origin, sessionProtection, readsFormatted]))
 					}
 					else if (!unknown) {
-						permission = confirm(message(true, [url, sessionProtection, readsFormatted]))
+						permission = true // confirm(message(true, [url, sessionProtection, readsFormatted]))
 					}
 					if (permission) {
 						sessionStorage.setItem(sessionName + 'permit', 'allow')
