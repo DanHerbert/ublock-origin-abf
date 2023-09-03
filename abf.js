@@ -144,14 +144,14 @@
 	const sessionProtection = `uBlock Origin ABF Session: ${hash} @${timestamp}`
 	console.log(sessionProtection)
 	// Date
-	const nativeGetTimezoneOffset = Date.prototype.getTimezoneOffset;
+	const nativeGetTimezoneOffset = Date.prototype.getTimezoneOffset
 	function getTimezoneOffset() {
 		nativeGetTimezoneOffset.apply(this)
-		return timezoneOffsetComputed;
+		return timezoneOffsetComputed
 	}
-	const nativeGetBattery = navigator.getBattery;
+	const nativeGetBattery = navigator.getBattery
 	function getBattery() {
-		nativeGetBattery();
+		nativeGetBattery()
 		return Promise.resolve(Object.freeze({charging: true, chargingTime: 0, dischargingTime: Infinity}))
 	}
 	// webgl
