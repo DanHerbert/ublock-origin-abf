@@ -1,15 +1,19 @@
-# uBlock Origin Abort Browser Fingerprinting (ABF)
-
-[![image](https://user-images.githubusercontent.com/6946045/87260830-8ed22100-c468-11ea-86ec-a9c730deb89e.gif)](https://fingerprintjs.com/demo)
-
-## Abort Browser Fingerprinting Scripts via uBlock Origin
-
-### Fork Information
+# Fork Information
 
 This was forked from [abrahamjuliot/ublock-origin-abf](https://github.com/abrahamjuliot/ublock-origin-abf) and makes some small changes:
 1. Removes confirmation prompts and assumes the default "give site fake random data" behavior.
-2. Anonymizes a few more uniquely indentifying properties. Specifically battery level & device pixel ratio (and time zone in the dev branch).
-3. Has 2 versions depending on how far you want to anonymize data. The `master` branch only fakes things that are relatively safe (see values in point above), while `dev` generates more fake values but at the risk of possibly breaking actual website functionality in small ways.
+2. Anonymizes a few more uniquely indentifying properties. Specifically:
+   - battery level
+   - device pixel ratio
+   - time zone offset **(dev branch)**
+4. Has 2 branches depending on how far you want to anonymize data. The `master` branch only fakes things that are relatively safe (see values in point above), while `dev` generates more fake values but at the risk of possibly breaking actual website functionality in small ways.
+
+# uBlock Origin Abort Browser Fingerprinting (ABF)
+
+[![Demo showing how fingerprinting site gives a different fingerprint for each tab](https://github.com/DanHerbert/ublock-origin-abf/assets/108949/92a33c5e-e0fe-4d40-8bd0-886bf56d5f15)](https://fingerprint.com/demo/)
+(Fake fingerprint data will remain the same in each tab for a period of time; every tab gets new fake data)
+
+## Abort Browser Fingerprinting Scripts via uBlock Origin
 
 ### Features:
 1. **[API protection](https://user-images.githubusercontent.com/6946045/87235868-ff5c3d80-c395-11ea-87b1-56f759419043.png)**: canvas, audio, webgl, and clientRects
