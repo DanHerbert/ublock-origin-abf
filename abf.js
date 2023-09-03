@@ -143,12 +143,16 @@
 	} = JSON.parse(sessionStorage.getItem(sessionName))
 	const sessionProtection = `uBlock Origin ABF Session: ${hash} @${timestamp}`
 	console.log(sessionProtection)
+	// window
+	const originalDevicePixelRatio = window.devicePixelRatio
+	const fakePixelRatio = Math.round(originalDevicePixelRatio)
 	// Date
 	const nativeGetTimezoneOffset = Date.prototype.getTimezoneOffset
 	function getTimezoneOffset() {
 		nativeGetTimezoneOffset.apply(this)
 		return timezoneOffsetComputed
 	}
+	// Navigator
 	const nativeGetBattery = navigator.getBattery
 	function getBattery() {
 		nativeGetBattery()
@@ -370,6 +374,7 @@
 	// Detect Fingerprinting
 	// Property API and Fingerprint Rank
 	const propAPI = {
+		devicePixelRatio: ['devicePixelRatio', 1],
 		appVersion: ['Navigator.prototype.appVersion', 1],
 		deviceMemory: ['Navigator.prototype.deviceMemory', 3],
 		doNotTrack: ['Navigator.prototype.doNotTrack', 1],
@@ -648,6 +653,12 @@
 		proto: true,
 		struct: {
 			getTimezoneOffset: getTimezoneOffset
+		}
+	},
+	{
+		name: 'window',
+		struct: {
+			devicePixelRatio: fakePixelRatio
 		}
 	},
 	{
