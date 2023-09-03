@@ -4,6 +4,13 @@
 
 ## Abort Browser Fingerprinting Scripts via uBlock Origin
 
+### Fork Information
+
+This was forked from [abrahamjuliot/ublock-origin-abf](https://github.com/abrahamjuliot/ublock-origin-abf) and makes some small changes:
+1. Removes confirmation prompts and assumes the default "give site fake random data" behavior.
+2. Anonymizes a few more uniquely indentifying properties. Specifically battery level & device pixel ratio (and time zone in the dev branch).
+3. Has 2 versions depending on how far you want to anonymize data. The `master` branch only fakes things that are relatively safe (see values in point above), while `dev` generates more fake values but at the risk of possibly breaking actual website functionality in small ways.
+
 ### Features:
 1. **[API protection](https://user-images.githubusercontent.com/6946045/87235868-ff5c3d80-c395-11ea-87b1-56f759419043.png)**: canvas, audio, webgl, and clientRects
 2. **Session Based**: randomization is stored in site session and resets only on a new session
