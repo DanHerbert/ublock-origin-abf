@@ -16,6 +16,8 @@
 			(Math.floor(Math.random() * ((max / 2) - min + 1)) + min) * 2
 		const rand = (min, max) =>
 			(Math.floor(Math.random() * (max - min + 1)) + min)
+		// Includes DST zones in the list of values, but does not attempt to figure out if the current date should use DST.
+		const timezoneOffsetComputed = listRand([360, 300, 240, -60, -120, -180, -480])
 		// Device GPU
 		// https://www.primegrid.com/gpu_list.php
 		const webglRenderer = () => {
@@ -118,6 +120,7 @@
 		return {
 			timestamp,
 			hash,
+			timezoneOffsetComputed,
 			webglExtensionComputed,
 			canvasContextComputed,
 			clientRectsOffsetComputed,
@@ -132,6 +135,7 @@
 	const {
 		timestamp,
 		hash,
+		timezoneOffsetComputed,
 		webglExtensionComputed,
 		canvasContextComputed,
 		clientRectsOffsetComputed,
@@ -142,6 +146,12 @@
 	// window
 	const originalDevicePixelRatio = window.devicePixelRatio
 	const fakePixelRatio = Math.round(originalDevicePixelRatio)
+	// Date
+	const nativeGetTimezoneOffset = Date.prototype.getTimezoneOffset
+	function getTimezoneOffset() {
+		nativeGetTimezoneOffset.apply(this)
+		return timezoneOffsetComputed
+	}
 	// Navigator
 	const nativeGetBattery = navigator.getBattery
 	function getBattery() {
@@ -642,7 +652,7 @@
 		name: 'Date',
 		proto: true,
 		struct: {
-			getTimezoneOffset: Date.prototype.getTimezoneOffset
+			getTimezoneOffset: getTimezoneOffset
 		}
 	},
 	{
